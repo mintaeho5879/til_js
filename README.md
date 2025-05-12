@@ -977,16 +977,18 @@ let num = 5;
 let result = num % 2 === 0 ? "짝수" : "홀수";
 ```
 
-## 3. 조건문 (Condition)
+## 3. 조건문(Condition)
 
 ### 3.1. if 문
 
-- `참/거짓` 을 판단하여 코드 분기 실행함.
+- `참/거짓`을 판단하여 코드 분기 실행함.
 - 모양 1.
 
 ```js
 if(조건) {
+
   조건이 참이면 실행;
+
 }
 ```
 
@@ -994,9 +996,13 @@ if(조건) {
 
 ```js
 if(조건) {
+
   조건이 참이면 실행;
+
 }else{
+
   조건이 거짓이면 실행;
+
 }
 ```
 
@@ -1004,13 +1010,21 @@ if(조건) {
 
 ```js
 if(조건1) {
-  조건이 참이면 실행;
+
+  조건1 이 참이면 실행;
+
 }else if(조건2){
-  조건이 거짓이면 실행;
+
+   조건2 이 참이면 실행;
+
 }else if(조건3){
-  조건이 거짓이면 실행;
+
+   조건3 이 참이면 실행;
+
 }else{
+
   모든 조건에 거짓이면 실행;
+
 }
 ```
 
@@ -1022,16 +1036,14 @@ if (isLogin === true) {
   console.log("로그인하셨네요. 반갑습니다.");
 }
 
-if (isLogine) {
+if (isLogin) {
   console.log("로그인하셨네요. 반갑습니다.");
-  console.log("오늘도 좋은 하루되세요.");
 }
 // 아래처럼 하시면 힘들어요. 코드 가독성 떨어져요.
-if (isLogine) console.log("로그인하셨네요. 반갑습니다.");
-console.log("오늘도 좋은 하루되세요.");
+if (isLogin) console.log("로그인하셨네요. 반갑습니다.");
 ```
 
-- 예제) 로그인 된 경우의 메시지와 로그인 안 된 경우의 메시지 출력하기.
+- 예제) 로그인 된 경우의 메시지와 로그인 안된 경우의 메시지 출력하기.
 
 ```js
 const isLogin = true;
@@ -1042,7 +1054,7 @@ if (isLogin) {
 }
 ```
 
-- 예제) 나이에 따라서 다른 메시지 출력하기 ( 조건이 2개 이상인 경우)
+- 예제) 나이에 따라서 다른 메시지 출력하기 (조건이 2개이상인 경우)
 
 ```js
 const age = 100;
@@ -1061,27 +1073,20 @@ if (age >= 60) {
 }
 ```
 
-- 예) 사용자가 입력한 항목이 값이 없을 경우 메시지 보내기 (필수 입력사항)
+- 예) 사용자가 입력한 항목이 값이 `없을 경우` 메시지 보내기 (필수 입력 사항)
 
 ```js
 const name = "";
 const pass = "1234";
-const useInfoCheck = false; // 사용자 정보활용 동의
+const useInfoCheck = false; // 사용자 정보 활용 동의
 const useEmailCheck = false; // 이메일 수신 동의
 
-if (!name) {
-  alert("이름을 입력하세요.");
-}
 if (name === "") {
-  alert("이름을 입력하세요."); // 똑같은 창이 2번 뜰 수 있다.
-}
-
-if (!name) {
   alert("이름을 입력하세요.");
   return;
 }
 
-if (name === "") {
+if (!name) {
   alert("이름을 입력하세요.");
   return;
 }
@@ -1090,44 +1095,48 @@ if (pass === "") {
   alert("비밀번호 입력하세요.");
   return;
 }
-
 if (!pass) {
   alert("비밀번호 입력하세요.");
   return;
 }
 
+if (useInfoCheck === false) {
+  alert("개인정보 동의를 체크하세요.");
+  return;
+}
 if (!useInfoCheck) {
   alert("개인정보 동의를 체크하세요.");
   return;
 }
-// if (useInfoCheck === false) {
-//   alert( "개인정보 동의를 체크하세요.");
-//   return;
-// }
+if (useEmailCheck === false) {
+  alert("이메일 수신 동의를 체크해주세요.");
+  return;
+}
 if (!useEmailCheck) {
   alert("이메일 수신 동의를 체크해주세요.");
   return;
 }
+
 console.log("저희 서비스를 자유롭게 활용하세요.");
 ```
 
 ### 3.2. switch 문
 
-- `여러개의 값` 중 하나의 `값`이 같은지 판단 후 실행(값을 비교)
+- `여러 개의 값` 중 하나의 `값`이 같은지 판단 후 실행 (값을 비교)
 
 ```js
 switch (값) {
   case 비교값1:
-    실행코드;
+                실행 코드
     break;
   case 비교값2:
-    실행코드;
+                실행 코드
     break;
   case 비교값3:
-    실행코드;
+                실행 코드
     break;
   default:
-    실행코드;
+              실행 코드
     break;
 }
 ```
@@ -1135,28 +1144,24 @@ switch (값) {
 - 예) 엘리베이터 층 예제
 
 ```js
-const Layer = 5; // 값
+const layer = 5; // 값
+
 switch (layer) {
   case 1:
     console.log("1층 내리세요.");
     break;
-
   case 2:
     console.log("2층 내리세요.");
     break;
-
   case 3:
     console.log("3층 내리세요.");
     break;
-
   case 4:
     console.log("4층 내리세요.");
     break;
-
   case 5:
     console.log("5층 내리세요.");
     break;
-
   default:
     console.log("당신은 내릴 층이 없습니다.");
     break;
@@ -1167,30 +1172,29 @@ switch (layer) {
 
 ```js
 const userRole = "ADMIN";
-if (userRole === "Member") {
+
+if (userRole === "MEMBER") {
   console.log("회원");
-} else if (usertRole === "ADMIN") {
+} else if (userRole === "ADMIN") {
   console.log("관리자");
 } else {
   console.log("비회원");
 }
 
-const userRole = "ADMIN";
-
 switch (userRole) {
-  case "Member":
-    console.log(회원);
+  case "MEMBER":
+    console.log("회원");
     break;
   case "ADMIN":
-    console.log(관리자);
+    console.log("관리자");
     break;
   default:
-    console.log(비회원);
+    console.log("비회원");
     break;
 }
 ```
 
-## 4. 반복문 (loop)
+## 4. 반복문(Loop)
 
 - 동일한 실행을 반복하는 문법.
 
@@ -1199,26 +1203,29 @@ switch (userRole) {
 - 주어진 `횟수만큼` 반복 실행 (`개발자가 반복횟수를 아는 경우`)
 
 ```js
-for(초기값은 단 한 번만 실행; 조건식의 결과가 true/false ; 증감식은 조건식을 false 로 만들기 위한 것) {
-   할 일 코드작성
+for(초기값은 단 한번만 실행 ; 조건식의 결과가 true/false ; 증감식은 조건식을 false 로 만들기 위한 것) {
+     할일 코드 작성
 }
 ```
 
 ```js
-for(let i = 0 i < 10; i total; i++) // 총 반복횟수
-  console.log(`현재 ${1} 입니다.`)
+const total = 10; // 총 반복횟수
+for (let i = 0; i < total; i++) {
+  console.log(`현재 ${i} 입니다.`);
+}
 ```
 
 - 예제) 총 합계 값 알아내기
 
 ```js
-// 장바구니 담긴 제품 가격 모음
+// 장바구니 담긴 제품 가격 모음.
 const bucketsArr = [1000, 500, 700, 400];
-// 반복횟수
+// 반복 횟수
 const total = bucketsArr.length;
-//반복문 없다면
+// 반복문 없다면
 let totalPrice = bucketsArr[0] + bucketsArr[1] + bucketsArr[2] + bucketsArr[3];
-//반복문을 활용한다면
+
+// 반복문을 활용한다면
 let totalPriceFor = 0;
 for (let i = 0; i < total; i++) {
   totalPriceFor = totalPriceFor + bucketsArr[i];
@@ -1231,44 +1238,48 @@ for (let i = 0; i < total; i++) {
 
 ```js
 // 백엔드에서 가져온 자료 json
-const goodData = [{ id: 542, name: "사과", price: 1000, stock: 10},
-                  {id: 5557, name: "딸기", price: 200 , stock: 0},
-                  {id : 2147, name: "키위", price: 5000 stock:5000}
+const goodData = [
+  { id: 542, name: "사과", price: 1000, stock: 10 },
+  { id: 5557, name: "딸기", price: 200, stock: 0 },
+  { id: 2147, name: "키위", price: 5000, stock: 5000 },
 ];
 // 반복횟수
-const total = goodData.Length;
+const total = goodData.length;
 for (let i = 0; i < total; i++) {
   // 제품 1개를 뽑아서 보관한다.
   const good = goodData[i];
   // html 만들기
   const tag = `<div id="${good.id}" class="good-box">
-    <p>제품명 : ${good.name}</p>
-    <p>가격 : ${good.price}</p>
-    <p>재고수량 : ${good.stock || "재고가 없어요"}</p>
-  </div>`;
+      <p>제품명 : ${good.name}</p>
+      <p>가격 : ${good.price}</p>
+      <p>재고수량 : ${good.stock || "재고가 없어요"}</p>
+    </div>`;
 }
 ```
 
 - 예) 구구단
 - 가까운 for 문에서 `break` 는 반복문 빠져나오고 종료됨.
-- 가까운 for 문에서 `continue` 는 반복문 실행 건너뛰고 계속 실행.
+- 가까운 for 문에서 `continue` 는 반복문 실행 건너띄고 계속 실행.
 
 ```js
 const total = 9;
 for (let i = 1; i <= total; i++) {
-  if (i === 6) {
-    break;
-  }
   if (i % 3 === 0) {
-    // 건너뛰기
+    // 건너띄기
     continue;
   }
+  if (i === 6) {
+    // 종료하기
+    break;
+  }
+
   console.log(i + " 단");
+
   for (let j = 1; j <= total; j++) {
     if (j === 6) {
       break;
     }
-    console.log(`${i}*${j} = ${i * j}`);
+    console.log(`${i} * ${j} = ${i * j}`);
   }
 }
 ```
@@ -1277,6 +1288,26 @@ for (let i = 1; i <= total; i++) {
 
 - for 문으로 모두 가능하다.
 - for 를 `객체를 대상`으로 편리하게 사용하도록 지원하는 문법
+
+```js
+// for in 구문 예제 (대상은 객체 속성 반복)
+const singer = {
+  id: "123",
+  name: "아이유",
+  age: 30,
+  city: "서울",
+};
+// 개발자가 직접 알아내는 경우
+// console.log(singer.id);
+// console.log(singer.name);
+// console.log(singer.age);
+
+// 반복문 활용
+for (let key in singer) {
+  console.log(key);
+  console.log(singer[key]);
+}
+```
 
 ### 4.3. for of 구문
 
@@ -1289,7 +1320,8 @@ const citiesArr = ["대구", "서울", "부산"];
 for (let city of citiesArr) {
   console.log(city);
 }
-const words = "안녕하세요. 반가워요.";
+
+const words = "안녕하세요.반가워요.";
 for (let i of words) {
   console.log(i);
 }
@@ -1298,7 +1330,7 @@ for (let i of words) {
 ### 4.4. while 구문
 
 - `조건이 참`인 동안 무한히 반복함.
-- 반복의 횟수를 모르는 경우
+- 반복에 횟수를 모르는 경우
 
 ```js
 while (조건) {
@@ -1317,7 +1349,7 @@ while (count < 5) {
 }
 ```
 
-### 4.4. do while 구문
+### 4.5. do while 구문
 
 - while 과 다르게 일단 실행하고 조건 검사
 
@@ -1329,6 +1361,7 @@ do {
 
 ```js
 let count = 0;
+
 do {
   // 거짓을 만들기 위한 조건을 작성함.
   count = count + 1;
@@ -1336,9 +1369,472 @@ do {
 } while (count < 5);
 ```
 
-## 5. 함수 (function)
+## 5. 함수(function)
 
-- 기능을 `{}` 묶어서 관리
-- 여러번 재활용한다.
+- 각 독립된 역할별 기능을 `{}` 묶고 `function 함수명()` 를 주어서 관리
+- 여러번 재활용(`호출, call`)한다. : `함수명()`
 - 문서 즉 설명서(JSDoc)가 잘 만들어져야 함.
 - 기능 예외처리를 잘 해야 한다.
+
+### 5.1. 함수가 왜 필요하지?
+
+- 반복되는 1줄 이상의 코드가 있다면 함수라는 것을 만들 생각해 보자.
+- 코드에 대한 가독성이 필요하면 함수라는 것을 만들 생각해 보자.
+- 한번에 코드를 수정하여 다양한 곳에 동시에 반영되는 것을 원하면 함수라는 것을 만들 생각해 보자.
+- 코드에 안정성을 생각한다면 함수라는 것을 만들 생각해 보자.
+- 협업을 한다면 기능을 만들어서 재활용하여야 하며 이때 함수라는 것을 만들 생각해 보자.
+
+```js
+// 아래는 사용자의 명단과 반가워요라는 메세지를 출력하는 기능이다.
+let user_1 = "홍길동";
+let user_2 = "김길동";
+let user_3 = "박길동";
+let user_4 = "고길동";
+let user_5 = "정길동";
+console.log(user_1 + "님 반가워요.");
+console.log(user_2 + "님 반가워요.");
+console.log(user_3 + "님 반가워요.");
+console.log(user_4 + "님 반가워요.");
+console.log(user_5 + "님 반가워요.");
+```
+
+- 기능을 구분해서 관리하고 싶다. (여기서는 회원명단 및 인사 기능)
+
+```js
+// 아래는 사용자의 명단과 반가워요라는 메세지를 출력하는 기능이다.
+function useMember() {
+  let user_1 = "홍길동";
+  let user_2 = "김길동";
+  let user_3 = "박길동";
+  let user_4 = "고길동";
+  let user_5 = "정길동";
+  console.log(user_1 + "님 반가워요.");
+  console.log(user_2 + "님 반가워요.");
+  console.log(user_3 + "님 반가워요.");
+  console.log(user_4 + "님 반가워요.");
+  console.log(user_5 + "님 반가워요.");
+}
+// 함수 활용, 함수 호출, 함수 call
+useMember();
+useMember();
+useMember();
+useMember();
+useMember();
+```
+
+### 5.2. 함수 만들기
+
+```js
+// 함수 이름은 동사로 짓는다.
+function 함수명() {
+  기능1;
+  기능2;
+  기능3;
+}
+function 함수명(재료1, 재료2, 재료3) {
+  재료1 처리 기능1;
+  재료2 처리 기능2;
+  재료3 처리 기능3;
+}
+```
+
+### 5.3. 계산기 만들기
+
+- 단계 1.
+
+```js
+// 계산기 만들기
+const result_1 = 5 + 4;
+const result_2 = 8 + 3;
+const result_3 = 7 + 2;
+const result_4 = 6 + 1;
+```
+
+- 단계 2.
+
+```js
+// 계산기 만들기
+function result_1() {
+  5 + 4;
+}
+function result_2() {
+  8 + 3;
+}
+function result_3() {
+  7 + 2;
+}
+function result_4() {
+  6 + 1;
+}
+```
+
+- 단계 3. 재료만 다르고 하는 일은 + 기능이다.
+
+```js
+// 계산기 만들기
+function add(재료1, 재료2) {
+  재료1 + 재료2;
+}
+add(5, 4);
+add(8, 3);
+add(7, 2);
+add(6, 1);
+```
+
+- 단계 4. minus 기능 만들기
+
+```js
+function minus(매개변수1, 매개변수2) {
+  매개변수1 - 매개변수2;
+}
+minus(5, 4);
+```
+
+- 단계 5. 기능에 예외처리(오류 처리) 적용하기
+- 오류 : 원하지 않는 결과, Error도 모두 포함해서 오류라 생각합니다.
+
+```js
+function add(매개변수1, 매개변수2) {
+  // 방어코드 (예외처리)
+  if (매개변수1 === undefined) {
+    return alert("매개변수 1 을 입력하세요.");
+  }
+  if (매개변수2 === undefined) {
+    return alert("매개변수 2 을 입력하세요.");
+  }
+  매개변수1 + 매개변수2;
+}
+
+function minus(매개변수1, 매개변수2) {
+  매개변수1 - 매개변수2;
+}
+
+add(5, "100"); // 원하지 않는 결과이므로 오류
+add(5, undefined); // 원하지 않는 결과이므로 오류
+add(5); // 원하지 않는 결과이므로 오류
+```
+
+### 5.4. JSDoc 으로 함수 사용에 대해서 안내(설명서) 하기
+
+- jsDoc 기본 이해
+- 재료, 매개변수를 parameter 라고 합니다.
+
+```js
+/**
+ * 두개의 변수를 받아서 덧셈하는 기능
+ *  @param {number} numA - 첫번째 숫자
+ *  @param {number} numB - 두번째 숫자
+ *  @returns {number} 두 숫자의 덧셈결과
+ */
+function add(numA, numB) {
+  if (numA === undefined) {
+    return alert("첫번째 매개변수 입력해주세요.");
+  }
+  if (numB === undefined) {
+    return alert("두번째 매개변수 입력해주세요.");
+  }
+  return numA + numB;
+}
+```
+
+### 5.5. JSDoc 을 이용한 계산기 함수 만들어보기
+
+````js
+/**
+ * 숫자 더하기 기능
+ * @param {number} a
+ * @param {number} b
+ * @returns {number} 덧셈 결과
+ */
+function add(a, b) {
+  return a + b;
+}
+
+/**
+ * 숫자 빼기 기능
+ * @param {number} a
+ * @param {number} b
+ * @returns {number} - 뺄셈 결과
+ */
+function minus(a, b) {
+  return a - b;
+}
+
+/**
+ * 숫자 곱하기 기능
+ * @param {number} a
+ * @param {number} b
+ * @returns {number} - 곱셈 결과
+ */
+function multi(a, b) {
+  return a * b;
+}
+/**
+ * 숫자 나누기 기능
+ * @param {number} a - number
+ * @param {number} b - number
+ * @returns {number} - 나눗셈 결과
+ *
+ * ------ 호출예 -----
+ * ```javascript
+ * let result = divide(5, 4)
+ * ```
+ *
+ */
+function divide(a, b) {
+  if (b === 0) {
+    return alert("분모는 0 이 아니어야 합니다.");
+  }
+  // 데이터 알아내고, 타입 비교하기
+  if (typeof a !== "number") {
+    return alert("분자는 숫자여야 합니다.");
+  }
+  if (typeof b !== "number") {
+    return alert("분모는 숫자여야 합니다.");
+  }
+
+  return a / b;
+}
+
+// 덧셈 사용
+const resultAdd = add(5, 4);
+const resultMinus = minus(5, 4);
+const resultMulti = multi(5, 4);
+const resultDivide = divide(5, 0);
+````
+
+- 추가 함수
+
+````js
+/**
+ * 숫자 더하기 기능
+ * @param {number} a
+ * @param {number} b
+ * @returns {number} 덧셈 결과
+ */
+function add(a, b) {
+  return a + b;
+}
+
+/**
+ * 숫자 빼기 기능
+ * @param {number} a
+ * @param {number} b
+ * @returns {number} - 뺄셈 결과
+ */
+function minus(a, b) {
+  return a - b;
+}
+
+/**
+ * 숫자 곱하기 기능
+ * @param {number} a
+ * @param {number} b
+ * @returns {number} - 곱셈 결과
+ */
+function multi(a, b) {
+  return a * b;
+}
+/**
+ * 숫자 나누기 기능
+ * @param {number} a - number
+ * @param {number} b - number
+ * @returns {number} - 나눗셈 결과
+ *
+ * ------ 호출예 -----
+ * ```javascript
+ * let result = divide(5, 4)
+ * ```
+ *
+ */
+function divide(a, b) {
+  if (b === 0) {
+    return alert("분모는 0 이 아니어야 합니다.");
+  }
+  // 데이터 알아내고, 타입 비교하기
+  if (typeof a !== "number") {
+    return alert("분자는 숫자여야 합니다.");
+  }
+  if (typeof b !== "number") {
+    return alert("분모는 숫자여야 합니다.");
+  }
+
+  return a / b;
+}
+
+/**
+ * 계산기 기능
+ * 계산기 기능은 +, -, *, / 기능이 있습니다.
+ * @param {string} symbol  +, -, *, / 기호 중 1개 입력
+ * @param {number} a 숫자 입력
+ * @param {number} b 숫자 입력
+ * @returns {number} 결과는 숫자
+ *
+ * 사용 예) =================
+ *
+ * ```javascript
+ * const result = calcurator("+", 5, 4);
+ * ```
+ */
+function calcurator(symbol, a, b) {
+  if (typeof symbol !== "string") {
+    return alert("기호를 입력하세요.");
+  }
+  let result = 0;
+
+  switch (symbol) {
+    case "+":
+      result = add(a, b);
+      break;
+    case "-":
+      result = minus(a, b);
+      break;
+    case "/":
+      result = divide(a, b);
+      break;
+    case "*":
+      result = multi(a, b);
+      break;
+    default:
+      return alert("올바른 기호를 입력해 주세요.");
+  }
+
+  return result;
+}
+````
+
+### 5.6. 다양한 함수 예제
+
+```js
+/**
+ * 메시지를 콘솔에 출력하기
+ * @param {string} message - 출력할 메시지
+ */
+function showMessage(message) {
+  console.log(message);
+}
+showMessage("안녕");
+showMessage("홍길동 반가워");
+```
+
+```js
+/**
+ * 배열을 받아서 요소를 출력하는 함수
+ * @param { number[] } arr - 숫자모음 배열
+ */
+function showArr(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+```
+
+```js
+/**
+ * 객체의 속성 값을 출력하는 기능
+ * @param { {id:number, nickName:string, age:number } } user - 사용자 객체
+ */
+function showUser(user) {
+  console.log(user.id);
+  console.log(user.nickName);
+  console.log(user.age);
+}
+```
+
+### 5.7. 함수의 기본 값 설정하기
+
+````js
+/**
+ * 나이를 10살 더하여서 출력함.
+ * @param {number} age - 현재 나이 입력
+ * ```javascript
+ * const result = showAge(10); // 20
+ * ```
+ */
+function showAge(age = 0) {
+  return age + 10;
+}
+````
+
+### 5.8. 매개변수의 총 개수 자동으로 알아내기
+
+```js
+/**
+ * 입력된 매개 변수 만큼 총합계산하기
+ * @param {number} numbers - 숫자 값
+ */
+function showTotal() {
+  console.log(arguments);
+  let total = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    total = total + arguments[i];
+  }
+  return total;
+}
+
+const result = showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
+```
+
+- Rest 파라메터는 전달 된 매개변수에 `정확한 값만 배열`로 만든다.
+
+```js
+/**
+ * 입력된 매개 변수 만큼 총합계산하기
+ * Rest 파라메터 이용하기
+ * @param {...number} numbers - 숫자 값
+ */
+function showTotal(...rest) {
+  console.log(rest);
+  let total = 0;
+  for (let i = 0; i < rest.length; i++) {
+    total = total + rest[i];
+  }
+  return total;
+}
+
+const result = showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
+```
+
+- Rest 파라메터는 기본 매개변수 적용 후, `나머지를 배열로 추출`한다.
+
+```js
+/**
+ * 입력된 매개 변수 만큼 총합계산하기
+ * Rest 파라메터 이용하기
+ * @param {...number} numbers - 숫자 값
+ */
+function showTotal(a, b, ...rest) {
+  console.log(a);
+  console.log(b);
+  console.log(rest);
+  let total = 0;
+  for (let i = 0; i < rest.length; i++) {
+    total = total + rest[i];
+  }
+  return total;
+}
+
+const result = showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
+```
+
+## 6. 함수 선언법을 꼭 이해하자.
+
+- 1. 일반적 함수 만드는 법
+
+```js
+function 함수명(매개변수) {
+  return 결과값;
+}
+함수명(매개변수);
+```
+
+- 2. `변수의 값`으로 함수를 만드는 법
+
+```js
+const 변수명 = function (매개변수) {
+  return 결과값;
+};
+변수명(매개변수);
+```
+
+- 3. 왜

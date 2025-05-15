@@ -2625,7 +2625,7 @@ function run(a) {
 }
 
 run(say);
-run(cry);
+run(눈물);
 
 // 아래 추천함.
 run(function () {});
@@ -2635,3 +2635,184 @@ run(function () {});
 const bt = document.querySelector(".bt");
 bt.addEventListener("click", function () {});
 ```
+
+## 14. 객체(Object)
+
+### 14.1. 객체를 `가장 간단`하게 만드는 법.
+
+- `객체 리터럴`로 생성한다.
+- `리터럴(literal)` 이라는 단어는 꼭 정의해 두세요.
+  - 리터럴은 정해진 `값을 개발자가 직접 작성`해 주는 것.
+  - 숫자 리터럴, 문자열 리터럴, 배열 리터럴, 객체 리터럴 등
+
+```js
+const 객체 = {
+  객체키명: 키값,
+  객체키명: 키값,
+};
+```
+
+- 만약 객체를 1개씩 만든다면 즉, `객체리터럴로 생성한다`면 객체명은 `Camel Case`로
+
+```js
+const personInfo = {
+  nickName: "아이유",
+  age: 20,
+  job: "singer",
+};
+```
+
+### 14.2. 여러 개의 동일한 형태(구조)의 객체를 생성한다면
+
+- `객체 생성자 함수`를 이용하는 법 (함수 이름이 `Pascal Case`)
+
+```js
+function PersonInfo(_name, _age) {
+  this.nickName = _name;
+  this.age = _age;
+  this.job = "singer";
+}
+const 아이유 = new PersonInfo("아이유", 20);
+const BTS = new PersonInfo("BTS", 20);
+```
+
+- `클래스`를 이용하는 법 (클래스 이름이 `Pascal Case`)
+
+```js
+class PersonInfo {
+  constructor(_name, _age) {
+    this.nickName = _name;
+    this.age = _age;
+    this.job = "singer";
+  }
+}
+const 아이유 = new PersonInfo("아이유", 20);
+const BTS = new PersonInfo("BTS", 20);
+```
+
+### 14.3. 연습예제
+
+```js
+const student_1 = {
+  name: "홍길동",
+  age: 10,
+};
+const student_2 = {
+  name: "둘리",
+  age: 2000,
+};
+
+function Student(_name, _age) {
+  this.name = _name;
+  this.age = _age;
+}
+const student_1 = new Student("홍길동", 20);
+const student_2 = new Student("둘리", 2000);
+```
+
+### 14.4. 객체에 값 말고 `기능 추가`하기
+
+- 기능은 흔히 `메소드(Method)` 또는 `행위(Behavior)`라고 호칭
+- 객체 리터럴로 메소드 추가해 보기
+
+```js
+const student_1 = {
+  name: "홍길동",
+  age: 20,
+
+  // 정확하게는 Property 로 기능 정의하기
+  sayName: function () {
+    this.name; // 객체
+  },
+
+  // 화살표 함수는 곤란합니다.(주의하자)
+  sayAge: () => {
+    this.age; // window
+  },
+  // 가장 최신 문법으로서 정확히 메소드 임을 표현
+  sayHi() {
+    this.age;
+  },
+};
+```
+
+- 위의 `객체 생성자 함수` 로 수정해 보자.
+
+```js
+function Student(_name, _age){
+  this.name = _name;
+  this.age = _age;
+  this.sayName = function () {
+    console.log(this.name); // 객체
+  },
+  // 아 위험하다. 화살표 주의
+  this.sayAge = () => {
+    console.log(this.age); // window
+  },
+  // this.sayHi = () {
+  //   console.log(this.age);
+  // },
+}
+// 같은 리소스를 사용할 때는 prototype 쓰자
+Student.prototype.sayHi = function(){}
+
+const student_1 = new Student("홍길동", 20)
+```
+
+- 클래스로 만들어 보자. (지금 괜찮다. 활용도 떨어진다.)
+
+```js
+class Student {
+  constructor(_name, _age) {
+    this.name = _name;
+    this.age = _age;
+  }
+  sayName() {
+    this.name;
+  }
+  // 화살표 독특하다. class 의 화살표는 객체
+  sayAge = () => {
+    this.age;
+  };
+  sayHi() {
+    this.name;
+  }
+}
+const student_1 = new Student("홍길동", 20);
+```
+
+- `정말 중요함 1. : Vue, React 에서는 기본이 객체 생성으로 시작함.`
+- `정말 중요함 2. : Vue, React 에서는 화살표 함수를 기본으로 함.`
+- `객체 생성자 함수`, `클래스`의 화살표 함수에서의 `this 는 모듈 객체`를 가르킨다.
+
+## 15. 배열(Array)
+
+- 데이터 종류와 상관없이 여러개를 `인덱싱(순서대로)` 할 수 있습니다.
+
+### 15.1. 배열 만드는 법
+
+```js
+// 가장 많이 함 (배열 리터럴)
+const 배열명 = [요소, 요소, 요소];
+// 추천하지 않음
+const 배열명 = new Array(3);
+```
+
+### 15.2. 배열의 요소를 인덱스로 찾기
+
+```js
+const 배열 = [1, "안녕", false, function () {}];
+배열[0];
+배열[1];
+배열[2];
+배열[3];
+```
+
+### 15.3. 배열도 객체라서 `속성`이 있어요.
+
+```js
+const 배열 = [1, 3, 5];
+배열.length; // 3개
+```
+
+### 15.4. 무지막지하게 데이터 종류 중 배열을 다룹니다.

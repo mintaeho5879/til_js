@@ -1,36 +1,33 @@
-// 데이터 서버에 자료를 호출함.
+async function getAllData() {
+  try {
+    const apiUrl = "https://jsonplaceholder.typicode.com";
+    // BE 데이터 연동 시도
+    let res = await fetch(`${apiUrl}/posts`);
+    let data = res.json();
+    console.log(data);
 
-function getData(api = "posts") {
-  return new Promise(function (resolve, reject) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", `https://jsonplaceholder.typicode.com/${api}`);
-    xhr.send();
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        // 성공
-        resolve(xhr.response);
-      } else if (xhr.status === 404) {
-        // 실패
-        reject();
-      } else if (xhr.status === 505) {
-        console.log("서버가 불안정합니다. 잠시 후 재접속해주세요.");
-      }
-    };
-  });
+    res = await fetch("https://jsonplaceholder.typicode.com/comments");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/albums");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/photos");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/todos");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/users");
+    data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log("ERROR 입니다. : " + error);
+  }
 }
-// 콜백함수 만들기 : 자료가 들어오면 처리함.
-const postsParser = function (res) {
-  console.log(res);
-};
-const commentsParser = function (res) {};
-const albumsParser = function (res) {};
-const photosParser = function (res) {};
-const todosParser = function (res) {};
-const usersParser = function (res) {};
-// 함수 사용
-getData("posts");
-getData("comments");
-getData("albums");
-getData("photos");
-getData("todos");
-getData("users");
+
+getAllData();
